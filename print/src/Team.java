@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Team {
     public String team;
     public ArrayList<Player> players;
+    public int maxSize = 16;
 
     public Team(String team) {
         this.team = team;
@@ -14,7 +15,9 @@ public class Team {
     }
 
     public void addPlayer(Player player) {
-        players.add(player);
+        if (size() < maxSize) {
+            players.add(player);
+        }
     }
 
     public void printPlayers() {
@@ -23,16 +26,25 @@ public class Team {
         }
     }
 
+    public int setMaxSize(int maxSize) {
+        this.maxSize = maxSize;
+        return maxSize;
+    }
+
+    public int size() {
+        return this.players.size();
+    }
+
     public static void main(String[] args) {
         Team barcelona = new Team("FC Barcelona");
+        barcelona.setMaxSize(1);
 
         Player brian = new Player("Brian");
         Player pekka = new Player("Pekka", 39);
-
         barcelona.addPlayer(brian);
         barcelona.addPlayer(pekka);
         barcelona.addPlayer(new Player("Mikael", 1)); // works similarly as the above
 
-        barcelona.printPlayers();
+        System.out.println("Number of players: " + barcelona.size());
     }
 }
