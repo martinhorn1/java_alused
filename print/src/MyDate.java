@@ -67,7 +67,7 @@ public class MyDate {
             }
         }
         else {
-            if (comparedDate.month >= this.month && comparedDate.month >= this.month) {
+            if (comparedDate.month >= this.month && comparedDate.day >= this.day) {
                 return Math.abs(this.year - comparedDate.year);
             } else {
                 return Math.abs(this.year - comparedDate.year) - 1;
