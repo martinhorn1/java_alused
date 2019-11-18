@@ -14,13 +14,25 @@ public class Phonebook {
         }
     }
 
+    public String searchNumber(String name) {
+        for (Person s : personList) {
+            if (s.getName() == name) {
+                return s.getNumber();
+            }
+        }
+        return "Number not known";
+    }
+
     public static void main(String[] args) {
         Phonebook phonebook = new Phonebook();
-
         phonebook.add("Pekka Mikkola", "040-123123");
         phonebook.add("Edsger Dijkstra", "045-456123");
         phonebook.add("Donald Knuth", "050-222333");
 
-        phonebook.printAll();
+        String number = phonebook.searchNumber("Pekka Mikkola");
+        System.out.println( number );
+
+        number = phonebook.searchNumber("Martti Tienari");
+        System.out.println( number );
     }
 }
