@@ -1,58 +1,37 @@
-import java.util.Calendar;
-
 public class Person {
     private String name;
-    private MyDate birthday;
+    private String number;
 
-    public Person(String name, int pp, int kk, int vv) {
+    public Person(String name, String number) {
         this.name = name;
-        this.birthday = new MyDate(pp, kk, vv);
-    }
-
-    public Person(String name, MyDate birthday) {
-        this.name = name;
-        this.birthday = birthday;
-    }
-
-    public Person(String name) {
-        this.name = name;
-        this.birthday = new MyDate(Calendar.getInstance().get(Calendar.DATE),Calendar.getInstance().get(Calendar.MONTH)+1,Calendar.getInstance().get(Calendar.YEAR));
-    }
-
-    public int age() {
-        // calculate the age based on the birthday and the current day
-        // you get the current day as follows:
-        // Calendar.getInstance().get(Calendar.DATE);
-        // Calendar.getInstance().get(Calendar.MONTH) + 1; // January is 0 so we add one
-        // Calendar.getInstance().get(Calendar.YEAR);
-        MyDate today = new MyDate(Calendar.getInstance().get(Calendar.DATE),Calendar.getInstance().get(Calendar.MONTH)+1,Calendar.getInstance().get(Calendar.YEAR));
-        return today.differenceInYears(birthday);
-    }
-
-    public boolean olderThan(Person compared) {
-        // compare the ages based on birthdate
-        if (birthday.earlier(compared.birthday)) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        this.number = number;
     }
 
     public String getName() {
         return this.name;
     }
 
+    public String getNumber() {
+        return this.number;
+    }
+
+    public void changeNumber(String newNumber) {
+        this.number = newNumber;
+    }
+
     public String toString() {
-        return this.name +", born "+ this.birthday;
+        return this.name + ", number: " + this.number;
     }
 
 
     public static void main(String[] args) {
-        Person pekka = new Person("Pekka", new MyDate(15, 2, 1983));
-        Person steve = new Person("Steve");
+        Person pekka = new Person("Pekka Mikkola", "040-123123");
 
-        System.out.println( pekka );
-        System.out.println( steve );
+        System.out.println(pekka.getName());
+        System.out.println(pekka.getNumber());
+
+        System.out.println(pekka);
+        pekka.changeNumber("050-333444");
+        System.out.println(pekka);
     }
 }
