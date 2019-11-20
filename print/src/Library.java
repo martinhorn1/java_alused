@@ -20,7 +20,7 @@ public class Library {
     public ArrayList<Book> searchByTitle(String title) {
         ArrayList<Book> found = new ArrayList<>();
         for (Book s : this.Library) {
-            if (s.title.contains(title)) {
+            if (StringUtils.included(s.title, title)) {
                 found.add(s);
             }
         }
@@ -30,7 +30,7 @@ public class Library {
     public ArrayList<Book> searchByPublisher(String publisher) {
         ArrayList<Book> found = new ArrayList<>();
         for (Book s : this.Library) {
-            if (s.publisher.contains(publisher)) {
+            if (StringUtils.included(s.publisher, publisher)) {
                 found.add(s);
             }
         }
@@ -55,18 +55,12 @@ public class Library {
         Library.addBook(new Book("NHL Hockey", "Stanley Kupp", 1952));
         Library.addBook(new Book("Battle Axes", "Tom A. Hawk", 1851));
 
-        ArrayList<Book> result = Library.searchByTitle("Cheese");
-        for (Book book: result) {
+        for (Book book: Library.searchByTitle("CHEESE")) {
             System.out.println(book);
         }
 
         System.out.println("---");
-        for (Book book: Library.searchByPublisher("Penguin Group  ")) {
-            System.out.println(book);
-        }
-
-        System.out.println("---");
-        for (Book book: Library.searchByYear(1851)) {
+        for (Book book: Library.searchByPublisher("PENGUIN  ")) {
             System.out.println(book);
         }
     }
