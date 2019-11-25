@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Sorting {
     public static int smallest(int[] array) {
         int result = array[0];
@@ -35,10 +37,23 @@ public class Sorting {
         return counter;
     }
 
+    public static void swap(int[] array, int index1, int index2) {
+        int number1 = array[index1];
+        int number2 = array[index2];
+
+        array[index1] = number2;
+        array[index2] = number1;
+    }
+
     public static void main(String[] args) {
-        int[] values = {-1, 6, 9, 8, 12};
-        System.out.println(indexOfTheSmallestStartingFrom(values, 1));
-        System.out.println(indexOfTheSmallestStartingFrom(values, 2));
-        System.out.println(indexOfTheSmallestStartingFrom(values, 4));
+        int[] values = {3, 2, 5, 4, 8};
+
+        System.out.println(Arrays.toString(values) );
+
+        swap(values, 1, 0);
+        System.out.println(Arrays.toString(values) );
+
+        swap(values, 0, 3);
+        System.out.println(Arrays.toString(values) );
     }
 }
