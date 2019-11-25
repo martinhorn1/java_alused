@@ -22,8 +22,23 @@ public class Sorting {
         return index;
     }
 
+    public static int indexOfTheSmallestStartingFrom(int[] array, int index) {
+        int min = array[index];
+        int counter = 0;
+
+        for (int i = index; i < array.length; i++) {
+            if (array[i] <= min) {
+                min = array[i];
+                counter = i;
+            }
+        }
+        return counter;
+    }
+
     public static void main(String[] args) {
-        int[] values = {6, 5, 8, 7, 11};
-        System.out.println("Index of the smallest number: " + indexOfTheSmallest(values));
+        int[] values = {-1, 6, 9, 8, 12};
+        System.out.println(indexOfTheSmallestStartingFrom(values, 1));
+        System.out.println(indexOfTheSmallestStartingFrom(values, 2));
+        System.out.println(indexOfTheSmallestStartingFrom(values, 4));
     }
 }
