@@ -43,17 +43,18 @@ public class Sorting {
 
         array[index1] = number2;
         array[index2] = number1;
+        System.out.println(Arrays.toString(array));
+    }
+
+    public static void sort(int[] array) {
+        System.out.println(Arrays.toString(array) + " - start");
+        for (int i = 0; i < array.length; i++) {
+            swap(array, indexOfTheSmallestStartingFrom(array, i), i);
+        }
     }
 
     public static void main(String[] args) {
-        int[] values = {3, 2, 5, 4, 8};
-
-        System.out.println(Arrays.toString(values) );
-
-        swap(values, 1, 0);
-        System.out.println(Arrays.toString(values) );
-
-        swap(values, 0, 3);
-        System.out.println(Arrays.toString(values) );
+        int[] values = {8, 3, 7, 9, 1, 2, 4};
+        sort(values);
     }
 }
