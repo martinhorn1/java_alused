@@ -23,6 +23,12 @@ public class Container {
         return total;
     }
 
+    public void printThings() {
+        for (Suitcase s : suitcases) {
+            s.printThings();
+        }
+    }
+
     public String toString() {
         return suitcases.size() + " suitcases (" + totalWeight() + " kg)";
     }
@@ -43,6 +49,7 @@ public class Container {
         container.addSuitcase(tomsCase);
         container.addSuitcase(georgesCase);
 
-        System.out.println(container);
+        System.out.println("There are the following things in the container suitcases:");
+        container.printThings();
     }
 }
