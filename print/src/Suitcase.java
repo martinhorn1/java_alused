@@ -27,6 +27,20 @@ public class Suitcase {
         return this.currentWeight;
     }
 
+    public Thing heaviestThing() {
+        if (things.isEmpty()) {
+            return null;
+        }
+
+        Thing heaviest = things.get(0);
+        for (Thing s : things) {
+            if (s.weight > heaviest.weight) {
+                heaviest = s;
+            }
+        }
+        return heaviest;
+    }
+
     public String toString() {
         if (things.size() == 0) {
             return "Empty (" + currentWeight + " kg)";
@@ -49,8 +63,7 @@ public class Suitcase {
         suitcase.addThing(mobile);
         suitcase.addThing(brick);
 
-        System.out.println("Your suitcase contains the following things:");
-        suitcase.printThings();
-        System.out.println("Total weight: " + suitcase.totalWeight() + " kg");
+        Thing heaviest = suitcase.heaviestThing();
+        System.out.println("The heaviest thing: " + heaviest);
     }
 }
