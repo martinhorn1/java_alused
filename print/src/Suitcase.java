@@ -18,7 +18,15 @@ public class Suitcase {
     }
 
     public String toString() {
-        return things.size() + " things (" + currentWeight + " kg)";
+        if (things.size() == 0) {
+            return "Empty (" + currentWeight + " kg)";
+        }
+        else if (things.size() == 1) {
+            return things.size() + " thing (" + currentWeight + " kg)";
+        }
+        else {
+            return things.size() + " things (" + currentWeight + " kg)";
+        }
     }
 
     public static void main(String[] args) {
