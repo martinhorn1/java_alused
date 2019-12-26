@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Storehouse {
     public Map<String, Integer> productPrices;
@@ -37,20 +38,20 @@ public class Storehouse {
         return false;
     }
 
+    public Set<String> products() {
+        return productPrices.keySet();
+    }
+
     public static void main(String[] args) {
         Storehouse store = new Storehouse();
-        store.addProduct("coffee", 5, 1);
+        store.addProduct("milk", 3, 10);
+        store.addProduct("coffee", 5, 6);
+        store.addProduct("buttermilk", 2, 20);
+        store.addProduct("jogurt", 2, 20);
 
-        System.out.println("stocks:");
-        System.out.println("coffee:  " + store.stock("coffee"));
-        System.out.println("sugar: " + store.stock("sugar"));
-
-        System.out.println("we take a coffee " + store.take("coffee"));
-        System.out.println("we take a coffee " + store.take("coffee"));
-        System.out.println("we take sugar " + store.take("sugar"));
-
-        System.out.println("stocks:");
-        System.out.println("coffee:  " + store.stock("coffee"));
-        System.out.println("sugar: " + store.stock("sugar"));
+        System.out.println("products:");
+        for (String product : store.products()) {
+            System.out.println(product);
+        }
     }
 }
