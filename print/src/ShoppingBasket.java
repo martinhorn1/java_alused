@@ -25,6 +25,12 @@ public class ShoppingBasket {
         return total;
     }
 
+    public void print() {
+        for (Purchase s : purchases.values()) {
+            System.out.println(s);
+        }
+    }
+
     public static void main(String[] args) {
         ShoppingBasket basket = new ShoppingBasket();
         basket.add("milk", 3);
@@ -33,5 +39,8 @@ public class ShoppingBasket {
         System.out.println("basket price: " + basket.price());
         basket.add("computer", 899);
         System.out.println("basket price: " + basket.price());
+        System.out.println("-----------");
+        System.out.println("Products:");
+        basket.print();
     }
 }
