@@ -22,14 +22,35 @@ public class Storehouse {
         return -99;
     }
 
+    public int stock(String product) {
+        if (productStock.containsKey(product)) {
+            return productStock.get(product);
+        }
+        return 0;
+    }
+
+    public boolean take(String product) {
+        if (productStock.containsKey(product) && productStock.get(product) > 0) {
+            productStock.put(product, productStock.get(product)-1);
+            return true;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         Storehouse store = new Storehouse();
-        store.addProduct("milk", 3, 10);
-        store.addProduct("coffee", 5, 7);
+        store.addProduct("coffee", 5, 1);
 
-        System.out.println("prices:");
-        System.out.println("milk: " + store.price("milk"));
-        System.out.println("coffee: " + store.price("coffee"));
-        System.out.println("sugar: " + store.price("sugar"));
+        System.out.println("stocks:");
+        System.out.println("coffee:  " + store.stock("coffee"));
+        System.out.println("sugar: " + store.stock("sugar"));
+
+        System.out.println("we take a coffee " + store.take("coffee"));
+        System.out.println("we take a coffee " + store.take("coffee"));
+        System.out.println("we take sugar " + store.take("sugar"));
+
+        System.out.println("stocks:");
+        System.out.println("coffee:  " + store.stock("coffee"));
+        System.out.println("sugar: " + store.stock("sugar"));
     }
 }
